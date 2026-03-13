@@ -29,6 +29,12 @@ The bot has demonstrated profitable performance in testing. Below is a screensho
 
 <img width="510" height="243" alt="image" src="https://github.com/user-attachments/assets/5d49678b-18be-4db8-b01b-66db5f0e183d" />
 
+---
+<img width="916" height="905" alt="image" src="https://github.com/user-attachments/assets/bb701369-f2dd-4076-8201-607c661c629a" />
+
+<img width="916" height="905" alt="image" src="https://github.com/user-attachments/assets/2ed0fbdd-a69a-47be-9444-9a2e0fdff5b5" />
+
+<img width="645" height="863" alt="image" src="https://github.com/user-attachments/assets/1f5612f1-2baa-4f78-99e4-0ae2d0c29e34" />
 
 ---
 
